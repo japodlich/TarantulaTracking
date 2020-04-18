@@ -1,0 +1,24 @@
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Viewing all Tarantulas</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentTarantula : ${tarantulas}" >
+<td th:text="${currentTarantula.id}" />
+<td th:text="${currentTarantula.name}" />
+<td th:text="${currentTarantula.species}" />
+<td th:text="${currentTarantula.sizeClassification}" />
+<td><a th:href="@{/edit/{id}(id=${currentTarantula.id})}">Edit</a></td>
+<td><a th:href="@{/delete/{id}(id=${currentTarantula.id})}">Delete</a></td>
+<td><a th:href="@{/listMoltsById/{id}(id=${currentTarantula.id})}">View Molts</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputTarantula">Add a new tarantula</a>
+</body>
+</html>
