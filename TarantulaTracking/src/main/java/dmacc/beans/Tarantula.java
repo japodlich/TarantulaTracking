@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@NoArgsConstructor
 @Entity
 public class Tarantula 
 {
@@ -16,10 +22,7 @@ public class Tarantula
 	private String sizeClassification;
 	//connect molts class here?
 	//test push
-	
-	public Tarantula() {
-		super();
-	}
+
 	
 	public Tarantula(int id, String name, String species, String sizeClassification) {
 		super();
@@ -36,43 +39,8 @@ public class Tarantula
 		this.sizeClassification = sizeClassification;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSpecies() {
-		return species;
-	}
-
-	public void setSpecies(String species) {
-		this.species = species;
-	}
-
-	public String getSizeClassification() {
-		return sizeClassification;
-	}
-
-	public void setSizeClassification(String sizeClassification) {
-		this.sizeClassification = sizeClassification;
-	}
-
-	@Override
-	public String toString() {
-		return "Tarantula [id=" + id + ", name=" + name + ", species=" + species + ", sizeClassification="
-				+ sizeClassification + "]";
-	}
+	
 	
 	
 	
