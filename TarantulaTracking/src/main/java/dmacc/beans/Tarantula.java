@@ -16,7 +16,7 @@ public class Tarantula
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	private String name;
 	private String species;
 	private String sizeClassification;
