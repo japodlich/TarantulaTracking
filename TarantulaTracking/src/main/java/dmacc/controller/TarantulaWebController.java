@@ -54,13 +54,14 @@ public class TarantulaWebController {
 	}
 	
 	@PostMapping("/update/{id}")
-	public String reviseContact(Tarantula t, Model model) {
+	public String reviseTarantula(Tarantula t, Model model) {
 	tRepo.save(t);
 	return viewAllTarantulas(model);
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String deleteUser(@PathVariable("id") long id, Model model) {
+	public String deleteTarantula(@PathVariable("id") long id, Model model) 
+	{
 	Tarantula t = tRepo.findById(id).orElse(null);
 	tRepo.delete(t);
 	return viewAllTarantulas(model);
