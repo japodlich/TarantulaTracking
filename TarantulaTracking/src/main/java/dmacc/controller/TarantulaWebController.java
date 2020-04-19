@@ -1,5 +1,7 @@
 package dmacc.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +67,36 @@ public class TarantulaWebController {
 	Tarantula t = tRepo.findById(id).orElse(null);
 	tRepo.delete(t);
 	return viewAllTarantulas(model);
+	
+	}
+	
+	@GetMapping("/listMoltsByTId/{id}")
+	public String viewManeuversByAppId(@PathVariable("id") long id, Model model) 
+	{
+		
+		/*
+	Tarantula t = tRepo.findById(id).orElse(null);
+	List<Tarantula> listByApp=new ArrayList<Maneuver>();
+	for (Maneuver m : mRepo.findAll())
+	{
+		if(t.getId() == m.getTarantula().getId())
+		{
+		listByApp.add(m);
+		}
+	} 
+	
+	
+	ManeuverAttribute mAttribute = new ManeuverAttribute(id, listByApp);
+	//create a new object with appID(type long), and lisyByApp array (type list)
+	//passobject as attribute
+	
+	//on html, attribute.appID will be the app id
+	//attricubute.listByApp for each will be the iteration
+	*/
+	
+
+	//model.addAttribute("MoltAttribute", mAttribute);
+	return "ListMolts";
 	
 	}
 	
