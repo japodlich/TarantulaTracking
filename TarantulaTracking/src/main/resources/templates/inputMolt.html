@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add a Molt</title>
+</head>
+<body>
+<form th:object="${newMolt}" th:action= "@{/updateMolt/{id}(id=${newMolt.id})}" method='POST'>
+ID: <input name="tId" size="20" th:field="*{tarantula.id}"><br />
+
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewAll">View all Tarantulas</a>
+</body>
+</html>

@@ -22,19 +22,19 @@ public class Molt {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String maneuverName;
-	private String maneuverConfidence;
+	private String moltDate;
+	private double newLegSpan;
 
 	
 	@ManyToOne (cascade= {CascadeType.REFRESH} ,fetch = FetchType.LAZY)
 	// do i need this? @JoinColumn(name="spider_ID",referencedColumnName="ID")
-	private Tarantula t;
+	private Tarantula tarantula;
 	
 	
 	
-	public Molt (Tarantula tarantula)
+	public Molt (Tarantula t)
 	{
-		this.t = tarantula;
+		this.tarantula = t;
 	}
 	
 	
