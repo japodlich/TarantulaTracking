@@ -1,0 +1,23 @@
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Viewing Molts</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentMolt : ${moltsByT}" >
+<td th:text="${currentMolt.id}" />
+<td th:text="${currentMolt.date}" />
+<td><a th:href="@{/delete/{id}(id=${currentTarantula.id})}">Delete</a></td>
+</tr>
+</table>
+<a href="/inputAMolt/2">add a molt</a>
+</form>
+<a href="/inputAMolt/{{id}(id=2)}">Add a Molt</a>
+<a href="@{/inputAMolt/{id}(id=2)}">View Maneuvers</a>
+<a href="../inputTarantula">Add a new Tarantula</a>
+</body>
+</html>
