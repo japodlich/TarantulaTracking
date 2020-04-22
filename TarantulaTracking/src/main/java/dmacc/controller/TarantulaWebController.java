@@ -1,5 +1,8 @@
 package dmacc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.beans.Molt;
 import dmacc.beans.Tarantula;
+import dmacc.repository.MoltRepository;
 import dmacc.repository.TarantulaRepository;
 
 
@@ -18,9 +23,11 @@ public class TarantulaWebController {
 
 	@Autowired
 	TarantulaRepository tRepo;
+	MoltRepository mRepo;
 	
 	
-	@GetMapping("/viewAll")
+	//@GetMapping("/viewAll")
+	@GetMapping({"/", "viewAll"})
 	public String viewAllTarantulas(Model model) {
 		
 	if(tRepo.findAll().isEmpty()) 
@@ -66,6 +73,47 @@ public class TarantulaWebController {
 	tRepo.delete(t);
 	return viewAllTarantulas(model);
 	
+	}
+	
+	@GetMapping("/listMoltsByTId/{id}")
+	public String viewMoltsByTId(@PathVariable("id") long id, Model model) 
+	{
+		
+	/*	
+	Tarantula t = tRepo.findById(id).orElse(null);
+	List<Molt> listByT=new ArrayList<Molt>();
+	for (Molt m : mRepo.findAll())
+	{
+		if(t.getId() == m.getTarantula().getId())
+		{
+		listByT.add(m);
+		}
+	} 
+	
+	
+	//MoltAttribute mAttribute = new MoltAttribute(id, listByApp);
+	//create a new object with appID(type long), and lisyByApp array (type list)
+	//passobject as attribute
+	
+	//on html, attribute.appID will be the app id
+	//attricubute.listByApp for each will be the iteration
+	
+	
+
+	model.addAttribute("moltsByT", listByT);
+	
+	*/
+	return "ListMolts";
+	
+	}
+	
+	@GetMapping ("/inputAMolt/{id}")
+	public String addNewManeuver (@PathVariable("id") long id, Model model) 
+	{
+	Tarantula t = tRepo.findById(id).orElse(null);
+	Molt m = new Molt(t);
+	model.addAttribute("newMolt", m);
+	return "inputMolt";  //earlier, this said "index" and it was not working
 	}
 	
 
