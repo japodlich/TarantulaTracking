@@ -78,7 +78,11 @@ public class TarantulaWebController {
 	@GetMapping("/listMoltsByTId/{id}")
 	public String viewMoltsByTId(@PathVariable("id") long id, Model model) 
 	{
-		
+		//use molt repository to list molt based on tarantula ids
+		//pass list to html as attribute
+		List<Molt> allMoltsbytId = mRepo.findBytId(id);
+		model.addAttribute("moltbytId", allMoltsbytId);
+		return "ListMolts";
 	/*	
 	Tarantula t = tRepo.findById(id).orElse(null);
 	List<Molt> listByT=new ArrayList<Molt>();
@@ -103,7 +107,7 @@ public class TarantulaWebController {
 	model.addAttribute("moltsByT", listByT);
 	
 	*/
-	return "ListMolts";
+	
 	
 	}
 	
