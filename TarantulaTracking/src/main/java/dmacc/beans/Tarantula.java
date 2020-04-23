@@ -20,6 +20,7 @@ public class Tarantula
 	private String name;
 	private String species;
 	private String sizeClassification;
+	
 	//connect molts class here?
 	//test push
 
