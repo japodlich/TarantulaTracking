@@ -24,6 +24,7 @@ public class Molt {
 	private long id;
 	private String moltDate;
 	private double newLegSpan;
+	private long tId; //connected to tarantula id
 
 	
 	@ManyToOne (cascade= {CascadeType.REFRESH} ,fetch = FetchType.LAZY)
