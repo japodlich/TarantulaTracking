@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+//import dmacc.attributes.MoltAttribute;
 import dmacc.beans.Molt;
 import dmacc.beans.Tarantula;
 import dmacc.repository.MoltRepository;
@@ -78,42 +79,40 @@ public class TarantulaWebController {
 	@GetMapping("/listMoltsByTId/{id}")
 	public String viewMoltsByTId(@PathVariable("id") long id, Model model) 
 	{
-		//use molt repository to list molt based on tarantula ids
-		//pass list to html as attribute
-		List<Molt> allMoltsbytId = mRepo.findBytId(id);
-		model.addAttribute("moltbytId", allMoltsbytId);
-		return "ListMolts";
-	/*	
-	Tarantula t = tRepo.findById(id).orElse(null);
-	List<Molt> listByT=new ArrayList<Molt>();
-	for (Molt m : mRepo.findAll())
-	{
-		if(t.getId() == m.getTarantula().getId())
-		{
-		listByT.add(m);
-		}
-	} 
+		
 	
+	List<Molt> listByT= mRepo.findByTid(id);
+	return "ListMolts";
 	
-	//MoltAttribute mAttribute = new MoltAttribute(id, listByApp);
-	//create a new object with appID(type long), and lisyByApp array (type list)
-	//passobject as attribute
+	//the program does not line when you try to iterate through mRepo.findAll()
 	
-	//on html, attribute.appID will be the app id
-	//attricubute.listByApp for each will be the iteration
+	//List<Molt> allMolts = mRepo.findAll();
 	
+//
+	//for  (Molt m : allMolts)
+	//{
+		//
+		//if(m.getTarantula().getId() == id)
+		//{
+		//listByT.add(m);
+	//		System.out.println ("************hello from inside four loop********" + m.getId());
+		//}
+	//} 	
+	//System.out.println ("************hello from OUTSIDE four loop********");
 	
+	//MoltAttribute mAttribute = new MoltAttribute(id, listByT);
+	//model.addAttribute("moltsByT", mAttribute);
+	
+	//model.addAttribute("moltsByTarantula", mRepo.findByTarantula());
 
-	model.addAttribute("moltsByT", listByT);
-	
-	*/
-	
+	//return "ListMolts";
 	
 	}
 	
 	@GetMapping ("/inputAMolt/{id}")
-	public String addNewManeuver (@PathVariable("id") long id, Model model) 
+	public String addNewMolt (@PathVariable("id") long id, Model model) 
 	{
+	System.out.print("***************" + id);
 	Tarantula t = tRepo.findById(id).orElse(null);
 	Molt m = new Molt(t);
 	model.addAttribute("newMolt", m);
