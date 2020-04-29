@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.jpa.repository.Query;
 
 import dmacc.beans.Molt;
+import dmacc.beans.Tarantula;
 
 
 
@@ -14,7 +15,7 @@ public interface MoltRepository extends JpaRepository <Molt, Long> {
 	//@SuppressWarnings("hiding")
 	//@Query("select m, t.id FROM Molt m JOIN Tarantula t ON " + "t.id = m.tId")
 
-	List<Molt> findByTid(long tid);
+	List<Molt> findByTarantula(Tarantula t);
 	
 	
 	
