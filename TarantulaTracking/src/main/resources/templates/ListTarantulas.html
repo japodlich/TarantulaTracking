@@ -9,13 +9,14 @@
 <form>
 <table>
 <tr th:each="currentTarantula : ${tarantulas}" >
-<td th:text="${currentTarantula.id}" />
+<td th:text="${currentTarantula.tId}" />
 <td th:text="${currentTarantula.name}" />
 <td th:text="${currentTarantula.species}" />
 <td th:text="${currentTarantula.sizeClassification}" />
-<td><a th:href="@{/edit/{id}(id=${currentTarantula.id})}">Edit</a></td>
-<td><a th:href="@{/delete/{id}(id=${currentTarantula.id})}">Delete</a></td>
-<td><a th:href="@{/listMoltsByTId/{id}(id=${currentTarantula.id})}">View Molts</a></td>
+<td><a th:href="@{/edit/{id}(id=${currentTarantula.tId})}">Edit</a></td>
+<td><a th:href="@{/delete/{id}(id=${currentTarantula.tId})}">Delete</a></td>
+<td><a th:href="@{/listMoltsByTId/{id}(id=${currentTarantula.tId})}">View Molts</a></td>
+<td><a th:href="@{/inputAMolt/{id}(id=${currentTarantula.tId})}">input a molt</a></td>
 </tr>
 </table>
 </form>

@@ -15,15 +15,15 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Embeddable  //do I need this? 
 @Entity
 public class Molt {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long moltId;
 	private String moltDate;
 	private double newLegSpan;
+	
 
 	
 	@ManyToOne (cascade= {CascadeType.REFRESH} ,fetch = FetchType.LAZY)
