@@ -2,6 +2,7 @@ package dmacc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,7 +82,10 @@ public class TarantulaWebController {
 	{
 		
 	
-	List<Molt> listByT= mRepo.findByTid(id);
+	//List<Molt> listByT= mRepo.findByTid(id);
+	System.out.print("*******************************************");
+	//mRepo.findAll().forEach(listByT::add);
+	//model.addAttribute("tID", id);
 	return "ListMolts";
 	
 	//the program does not line when you try to iterate through mRepo.findAll()
@@ -112,11 +116,19 @@ public class TarantulaWebController {
 	@GetMapping ("/inputAMolt/{id}")
 	public String addNewMolt (@PathVariable("id") long id, Model model) 
 	{
-	System.out.print("***************" + id);
-	Tarantula t = tRepo.findById(id).orElse(null);
+	Tarantula t = tRepo.getOne(id);
 	Molt m = new Molt(t);
 	model.addAttribute("newMolt", m);
 	return "inputMolt";  //earlier, this said "index" and it was not working
+	
+	}
+	
+	@PostMapping("/inputAMolt")
+	public String addNewMolt (@ModelAttribute Molt m,Model model) {
+		System.out.print("***************" + m.getMoltDate() + " HELLO WATS UP "+ "**********");
+	mRepo.save(m);  //NOT SAVING
+	
+	return viewAllTarantulas(model);
 	}
 	
 
