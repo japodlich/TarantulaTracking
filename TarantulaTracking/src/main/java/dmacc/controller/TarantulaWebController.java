@@ -116,16 +116,18 @@ public class TarantulaWebController {
 	@GetMapping ("/inputAMolt/{id}")
 	public String addNewMolt (@PathVariable("id") long id, Model model) 
 	{
-	System.out.print("***************" + id);
 	Tarantula t = tRepo.getOne(id);
 	Molt m = new Molt(t);
 	model.addAttribute("newMolt", m);
 	return "inputMolt";  //earlier, this said "index" and it was not working
+	
 	}
 	
 	@PostMapping("/inputAMolt")
 	public String addNewMolt (@ModelAttribute Molt m,Model model) {
-	mRepo.save(m);
+		System.out.print("***************" + m.getMoltDate() + " HELLO WATS UP "+ "**********");
+	mRepo.save(m);  //NOT SAVING
+	
 	return viewAllTarantulas(model);
 	}
 	
