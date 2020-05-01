@@ -7,7 +7,6 @@
 <form th:object="${newMolt}" th:action= "@{/inputAMolt}" method='POST'>
 Date: <input name="moltDate" size="20" th:field="*{moltDate}"><br />
 New Leg Span: <input name="newLegSpan" size="20" th:field="*{newLegSpan}"><br />
-
 <input name="submit" type="submit" value="submit" />
 </form>
 <a th:href="@{/viewAll}">View aalll Tarantulas</a>

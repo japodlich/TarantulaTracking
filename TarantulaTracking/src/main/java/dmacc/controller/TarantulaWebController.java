@@ -25,6 +25,7 @@ public class TarantulaWebController {
 
 	@Autowired
 	TarantulaRepository tRepo;
+	@Autowired
 	MoltRepository mRepo;
 	
 	
@@ -83,7 +84,7 @@ public class TarantulaWebController {
 		
 	
 	//List<Molt> listByT= mRepo.findByTid(id);
-	System.out.print("*******************************************");
+
 	//mRepo.findAll().forEach(listByT::add);
 	//model.addAttribute("tID", id);
 	return "ListMolts";
